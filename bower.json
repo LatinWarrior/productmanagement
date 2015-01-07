@@ -1,0 +1,22 @@
+{
+  "name": "ProductManagement",
+  "version": "0.0.1",
+  "authors": [
+    "Luis Blanco 路易斯.布兰科 <luis_blanco@volusion.com>"
+  ],
+  "description": "Product Management Line of Business Application",
+  "main": "index.html",
+  "keywords": [
+    "Angular.JS",
+    "WebApi"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
