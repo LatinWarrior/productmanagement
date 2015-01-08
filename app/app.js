@@ -4,5 +4,7 @@
 (function () {
     "use strict";
 
-    var app = angular.module('productManagement', []);
+    // Remove the dependency to productResourceMock when the backend service is ready.
+    var app = angular.module('productManagement',
+        ["common.services", "productResourceMock"]);
 }());
