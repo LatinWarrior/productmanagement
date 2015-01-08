@@ -37,5 +37,11 @@
                 "imageUrl": "https://openclipart.org/image/800px/svg_to_png/2507/Machovka-Pipe-wrench.png"
             }
         ];
+
+        vm.showImage = false;
+
+        vm.toggleImage = function(){
+            vm.showImage = !vm.showImage;
+        }
     }
 }());
