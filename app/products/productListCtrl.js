@@ -5,9 +5,9 @@
     "use strict";
     angular
         .module("productManagement")
-        .controller("ProductListCrtl", ["productResource", ProductListCrtl]);
+        .controller("ProductListCtrl", ["productResource", ProductListCtrl]);
 
-    function ProductListCrtl(productResource) {
+    function ProductListCtrl(productResource) {
         // when using the controller as syntax, the model is defined in this variable.
         var vm = this;
 

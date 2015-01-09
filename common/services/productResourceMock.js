@@ -11,6 +11,9 @@
         ["ngMockE2E"]);
 
     app.run(function ($httpBackend) {
+
+        console.log("in productResourceMock.js");
+
         var products = [
             {
                 "productId": 1,
@@ -76,7 +79,11 @@
 
         var productUrl = "/api/products";
 
+        console.log("Before calling $httpBackend");
+
         $httpBackend.whenGET(productUrl).respond(products);
+
+        $httpBackend.whenGET().passThrough();
     });
 
 }());
