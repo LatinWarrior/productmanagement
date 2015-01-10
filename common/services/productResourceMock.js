@@ -77,7 +77,7 @@
             }
         ];
 
-        var productUrl = "/api/products";
+        var productUrl = "/products";
 
         console.log("Before calling $httpBackend");
 
