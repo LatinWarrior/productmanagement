@@ -6,6 +6,7 @@
     <!-- Style sheets -->
     <link href="css/bootstrap.css" rel="stylesheet"/>
     <link rel="stylesheet" href="css/app.css"/>
+    <link rel="stylesheet" href="css/angular-ui.css" />
 </head>
 <body ng-app="productManagement">
 <nav class="navbar navbar-inverse">
@@ -22,7 +23,9 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li><a ui-sref="productList">Product List</a></li>
-                <li><a ui-sref="productEdit({productId:0})"><i class="glyphicon glyphicon-plus"></i>Add Product </a></li>
+                <li><a ui-sref="productEdit.info({productId: 0})">
+                    <i class="glyphicon glyphicon-plus"></i>Add Product</a>
+                </li>
             </ul>
         </div>
     </div>
@@ -50,6 +53,8 @@
 <script src="js/angular-route/angular-route.js"></script>
 <script src="js/angular-mocks/angular-mocks.js"></script>
 <script src="js/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="js/angular-ui/build/angular-ui.js"></script>
+<script src="js/angular-bootstrap/ui-bootstrap-tpls-0.12.0.js"></script>
 <!--<script src="js/restangular/dist/restangular.js"></script>-->
 
 <!-- Application Scripts -->
@@ -63,6 +68,7 @@
 <!-- Product Controller Scripts -->
 <script src="app/products/productListCtrl.js"></script>
 <script src="app/products/productDetailCtrl.js"></script>
+<script src="app/products/productEditCtrl.js"></script>
 
 </body>
 </html>

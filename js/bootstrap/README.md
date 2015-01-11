@@ -1,129 +1,183 @@
-# [Bootstrap](http://getbootstrap.com)
-[![Bower version](https://badge.fury.io/bo/bootstrap.svg)](http://badge.fury.io/bo/bootstrap)
-[![NPM version](https://badge.fury.io/js/bootstrap.svg)](http://badge.fury.io/js/bootstrap)
-[![Build Status](https://secure.travis-ci.org/twbs/bootstrap.svg?branch=master)](https://travis-ci.org/twbs/bootstrap)
-[![devDependency Status](https://david-dm.org/twbs/bootstrap/dev-status.svg)](https://david-dm.org/twbs/bootstrap#info=devDependencies)
-[![Selenium Test Status](https://saucelabs.com/browser-matrix/bootstrap.svg)](https://saucelabs.com/u/bootstrap)
+# bootstrap - [AngularJS](http://angularjs.org/) directives specific to [Bootstrap](http://getbootstrap.com)
 
-Bootstrap is a sleek, intuitive, and powerful front-end framework for faster and easier web development, created by [Mark Otto](https://twitter.com/mdo) and [Jacob Thornton](https://twitter.com/fat), and maintained by the [core team](https://github.com/twbs?tab=members) with the massive support and involvement of the community.
+***
 
-To get started, check out <http://getbootstrap.com>!
+[![Build Status](https://secure.travis-ci.org/angular-ui/bootstrap.svg)](http://travis-ci.org/angular-ui/bootstrap)
+[![devDependency Status](https://david-dm.org/angular-ui/bootstrap/dev-status.svg?branch=master)](https://david-dm.org/angular-ui/bootstrap#info=devDependencies)
 
-## Table of contents
+## Demo
 
-- [Quick start](#quick-start)
-- [Bugs and feature requests](#bugs-and-feature-requests)
-- [Documentation](#documentation)
-- [Contributing](#contributing)
-- [Community](#community)
-- [Versioning](#versioning)
-- [Creators](#creators)
-- [Copyright and license](#copyright-and-license)
+Do you want to see directives in action? Visit http://angular-ui.github.io/bootstrap/!
 
-## Quick start
+## Installation
 
-Four quick start options are available:
+Installation is easy as angular-ui-bootstrap has minimal dependencies - only the AngularJS and Bootstrap's CSS are required.
+After downloading dependencies (or better yet, referencing them from your favourite CDN) you need to download build version of this project. All the files and their purposes are described here: 
+https://github.com/angular-ui/bootstrap/tree/gh-pages#build-files
+Don't worry, if you are not sure which file to take, opt for `ui-bootstrap-tpls-[version].min.js`.
 
-- [Download the latest release](https://github.com/twbs/bootstrap/archive/v3.3.1.zip).
-- Clone the repo: `git clone https://github.com/twbs/bootstrap.git`.
-- Install with [Bower](http://bower.io): `bower install bootstrap`.
-- Install with [npm](https://www.npmjs.org): `npm install bootstrap`.
+When you are done downloading all the dependencies and project files the only remaining part is to add dependencies on the `ui.bootstrap` AngularJS module:
 
-Read the [Getting started page](http://getbootstrap.com/getting-started/) for information on the framework contents, templates and examples, and more.
-
-### What's included
-
-Within the download you'll find the following directories and files, logically grouping common assets and providing both compiled and minified variations. You'll see something like this:
-
-```
-bootstrap/
-├── css/
-│   ├── bootstrap.css
-│   ├── bootstrap.min.css
-│   ├── bootstrap-theme.css
-│   └── bootstrap-theme.min.css
-├── js/
-│   ├── bootstrap.js
-│   └── bootstrap.min.js
-└── fonts/
-    ├── glyphicons-halflings-regular.eot
-    ├── glyphicons-halflings-regular.svg
-    ├── glyphicons-halflings-regular.ttf
-    └── glyphicons-halflings-regular.woff
+```javascript
+angular.module('myModule', ['ui.bootstrap']);
 ```
 
-We provide compiled CSS and JS (`bootstrap.*`), as well as compiled and minified CSS and JS (`bootstrap.min.*`). Fonts from Glyphicons are included, as is the optional Bootstrap theme.
+Project files are also available through your favourite package manager:
+* **Bower**: `bower install angular-bootstrap`
+* **NuGet**: https://nuget.org/packages/Angular.UI.Bootstrap/
 
+## FAQ
 
+https://github.com/angular-ui/bootstrap/wiki/FAQ
 
-## Bugs and feature requests
+## Supported browsers
 
-Have a bug or a feature request? Please first read the [issue guidelines](https://github.com/twbs/bootstrap/blob/master/CONTRIBUTING.md#using-the-issue-tracker) and search for existing and closed issues. If your problem or idea is not addressed yet, [please open a new issue](https://github.com/twbs/bootstrap/issues/new).
+Directives from this repository are automatically tested with the following browsers:
+* Chrome (stable and canary channel)
+* Firefox
+* IE 9 and 10
+* Opera
+* Safari
 
+Modern mobile browsers should work without problems.
 
-## Documentation
+**IE 8 is not officially supported at the moment**. This project is run by volunteers and with the current number of commiters
+we are not in the position to guarantee IE8 support. If you need support for IE8 we would welcome a contributor who would like to take care about IE8.
+Alternatively you could sponsor this project to guarantee IE8 support.
 
-Bootstrap's documentation, included in this repo in the root directory, is built with [Jekyll](http://jekyllrb.com) and publicly hosted on GitHub Pages at <http://getbootstrap.com>. The docs may also be run locally.
+We believe that most of the directives would work OK after:
+* including relevant shims (for ES5 we recommend https://github.com/kriskowal/es5-shim)
+* taking care of the steps described in http://docs.angularjs.org/guide/ie
 
-### Running documentation locally
+We are simply not regularly testing against IE8.
 
-1. If necessary, [install Jekyll](http://jekyllrb.com/docs/installation) (requires v2.5.x).
-  - **Windows users:** Read [this unofficial guide](http://jekyll-windows.juthilo.com/) to get Jekyll up and running without problems.
-2. Install the Ruby-based syntax highlighter, [Rouge](https://github.com/jneen/rouge), with `gem install rouge`.
-3. From the root `/bootstrap` directory, run `jekyll serve` in the command line.
-4. Open <http://localhost:9001> in your browser, and voilà.
+## Project philosophy
 
-Learn more about using Jekyll by reading its [documentation](http://jekyllrb.com/docs/home/).
+### Native, lightweight directives
 
-### Documentation for previous releases
+We are aiming at providing a set of AngularJS directives based on Bootstrap's markup and CSS. The goal is to provide **native AngularJS directives** without any dependency on jQuery or Bootstrap's JavaScript.
+It is often better to rewrite an existing JavaScript code and create a new, pure AngularJS directive. Most of the time the resulting directive is smaller as compared to the original JavaScript code size and better integrated into the AngularJS ecosystem.
 
-Documentation for v2.3.2 has been made available for the time being at <http://getbootstrap.com/2.3.2/> while folks transition to Bootstrap 3.
+### Customizability
 
-[Previous releases](https://github.com/twbs/bootstrap/releases) and their documentation are also available for download.
+All the directives in this repository should have their markup externalized as templates (loaded via `templateUrl`). In practice it means that you can **customize directive's markup at will**. One could even imagine providing a non-Bootstrap version of the templates!
 
+### Take what you need and not more
 
+Each directive has its own AngularJS module without any dependencies on other modules or third-party JavaScript code. In practice it means that you can **just grab the code for the directives you need** and you are not obliged to drag the whole repository.
 
-## Contributing
+### Quality and stability
 
-Please read through our [contributing guidelines](https://github.com/twbs/bootstrap/blob/master/CONTRIBUTING.md). Included are directions for opening issues, coding standards, and notes on development.
+Directives should work. All the time and in all browsers. This is why all the directives have a comprehensive suite of unit tests. All the automated tests are executed on each checkin in several browsers: Chrome, ChromeCanary, Firefox, Opera, Safari, IE9.
+In fact we are fortunate enough to **benefit from the same testing infrastructure as AngularJS**!
 
-Moreover, if your pull request contains JavaScript patches or features, you must include relevant unit tests. All HTML and CSS should conform to the [Code Guide](https://github.com/mdo/code-guide), maintained by [Mark Otto](https://github.com/mdo).
+## Support
 
-Editor preferences are available in the [editor config](https://github.com/twbs/bootstrap/blob/master/.editorconfig) for easy use in common text editors. Read more and download plugins at <http://editorconfig.org>.
+If you are having problems making some directives work, there are several ways to get help:
 
+* Live help in the IRC (`#angularjs` channel at the `freenode` network). Use this [webchat](https://webchat.freenode.net/) or your own IRC client.
+* Ask a question in [stackoverflow](http://stackoverflow.com/) under the [angular-ui-bootstrap](http://stackoverflow.com/questions/tagged/angular-ui-bootstrap) tag.
+* Write your question in our [mailing list](https://groups.google.com/forum/#!categories/angular-ui/bootstrap).
 
+Project's issue on GitHub should be used discuss bugs and features.
 
-## Community
+## Contributing to the project
 
-Keep track of development and community news.
+We are always looking for the quality contributions! Please check the [CONTRIBUTING.md](CONTRIBUTING.md) for the contribution guidelines.
 
-- Follow [@twbootstrap on Twitter](https://twitter.com/twbootstrap).
-- Read and subscribe to [The Official Bootstrap Blog](http://blog.getbootstrap.com).
-- Chat with fellow Bootstrappers in IRC. On the `irc.freenode.net` server, in the `##bootstrap` channel.
-- Implementation help may be found at Stack Overflow (tagged [`twitter-bootstrap-3`](http://stackoverflow.com/questions/tagged/twitter-bootstrap-3)).
+### Development
+#### Prepare your environment
+* Install [Node.js](http://nodejs.org/) and NPM (should come with)
+* Install global dev dependencies: `npm install -g grunt-cli karma`
+* Install local dev dependencies: `npm install` while current directory is bootstrap repo
 
+#### Build
+* Build the whole project: `grunt` - this will run `lint`, `test`, and `concat` targets
+* To build modules, first run `grunt html2js` then `grunt build:module1:module2...:moduleN`
 
+You can generate a custom build, containing only needed modules, from the project's homepage.
+Alternatively you can run local Grunt build from the command line and list needed modules as shown below:
 
-## Versioning
+```javascript
+grunt build:modal:tabs:alert:popover:dropdownToggle:buttons:progressbar
+```
 
-For transparency into our release cycle and in striving to maintain backward compatibility, Bootstrap is maintained under [the Semantic Versioning guidelines](http://semver.org/). Sometimes we screw up, but we'll adhere to those rules whenever possible.
+Check the Grunt build file for other tasks that are defined for this project.
 
+#### TDD
+* Run test: `grunt watch`
+ 
+This will start Karma server and will continuously watch files in the project, executing tests upon every change.
 
+#### Test coverage
+Add the `--coverage` option (e.g. `grunt test --coverage`, `grunt watch --coverage`) to see reports on the test coverage. These coverage reports are found in the coverage folder.
 
-## Creators
+### Customize templates
 
-**Mark Otto**
+As mentioned directives from this repository have all the markup externalized in templates. You might want to customize default
+templates to match your desired look & feel, add new functionality etc.
 
-- <https://twitter.com/mdo>
-- <https://github.com/mdo>
+The easiest way to override an individual template is to use the `<script>` directive:
 
-**Jacob Thornton**
+```html
+<script id="template/alert/alert.html" type="text/ng-template">
+    <div class='alert' ng-class='type && "alert-" + type'>
+        <button ng-show='closeable' type='button' class='close' ng-click='close()'>Close</button>
+        <div ng-transclude></div>
+    </div>
+</script>
+```
 
-- <https://twitter.com/fat>
-- <https://github.com/fat>
+If you want to override more templates it makes sense to store them as individual files and feed the `$templateCache` from those partials.
+For people using Grunt as the build tool it can be easily done using the `grunt-html2js` plugin. You can also configure your own template url.
+Let's have a look:
 
+Your own template url is `views/partials/ui-bootstrap-tpls/alert/alert.html`.
 
+Add "html2js" task to your Gruntfile
+```javascript
+html2js: {
+  options: {
+    base: '.',
+    module: 'ui-templates',
+    rename: function (modulePath) {
+      var moduleName = modulePath.replace('app/views/partials/ui-bootstrap-tpls/', '');
+      return 'template/' + moduleName;
+    }
+  },
+  main: {
+    src: ['app/views/partials/ui-bootstrap-tpls/**/*.html'],
+    dest: '.tmp/ui-templates.js'
+  }
+}
+```
 
-## Copyright and license
+Make sure to load your template.js file
+`<script src="/ui-templates.js"></script>`
 
-Code and documentation copyright 2011-2014 Twitter, Inc. Code released under [the MIT license](LICENSE). Docs released under [Creative Commons](docs/LICENSE).
+Inject the `ui-templates` module in your `app.js`
+```javascript
+angular.module('myApp', [
+  'ui.bootstrap',
+  'ui-templates'
+]);
+```
+
+Then it will work fine!
+
+For more information visit: https://github.com/karlgoldstein/grunt-html2js
+
+### Release
+* Bump up version number in `package.json`
+* Commit the version change with the following message: `chore(release): [version number]`
+* tag
+* push changes and a tag (`git push --tags`)
+* switch to the `gh-pages` branch: `git checkout gh-pages`
+* copy content of the dist folder to the main folder
+* Commit the version change with the following message: `chore(release): [version number]`
+* push changes
+* switch back to the `main branch` and modify `package.json` to bump up version for the next iteration
+* commit (`chore(release): starting [version number]`) and push
+* publish Bower and NuGet packages
+
+Well done! (If you don't like repeating yourself open a PR with a grunt task taking care of the above!)

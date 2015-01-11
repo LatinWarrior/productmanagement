@@ -10,6 +10,7 @@
         .factory("productResource", ["$resource", productResource]);
 
     function productResource($resource){
-        return $resource("/products/:productId")
+        //console.log("product resource was called");
+        return $resource("/products/:productId");
     }
 }());

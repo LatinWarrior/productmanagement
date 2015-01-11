@@ -81,9 +81,61 @@
 
         console.log("Before calling $httpBackend");
 
+        var editingRegex = new RegExp(productUrl + "/[0-9][0-9]*", '');
+
+        console.log("editingRegex: " + editingRegex);
+
+        $httpBackend.whenGET(editingRegex).respond(function (method, url, data) {
+                var product = {productId: 0};
+                var parameters = url.split('/');
+                var length = parameters.length;
+                var id = parameters[length - 1];
+
+                if (id > 0) {
+                    for (var i = 0; i < products.length; i++) {
+                        if (products[i].productId == id) {
+                            products = products[i];
+                            break;
+                        }
+                    }
+                }
+
+                return [200, product, {}];
+            }
+        );
+
+        $httpBackend.whenPOST(productUrl).respond(function(method, url, data){
+                var product = angular.fromJson(data);
+
+                if (!product.productId){
+                    // New product Id.
+                    product.productId = products[products.length - 1].productId + 1;
+                    products.push(product);
+                }
+                else{
+                    // Updated product.
+                    for (var i = 0; i < products.length; i++){
+                        if (products[i].productId == product.productId){
+                            products[i]=product;
+                            break;
+                        }
+                    }
+                }
+
+                return [200, product, {}];
+            }
+        );
+
         $httpBackend.whenGET(productUrl).respond(products);
 
-        $httpBackend.whenGET().passThrough();
+        // jQuery
+        // var product = $.grep(products, function(e){ return e.id == 1; });
+
+        // Underscore
+        // var product = _.find(products, function(obj) { return obj.id == '45' })
+
+        // Pass through any requests for application files.
+        $httpBackend.whenGET(/app/).passThrough();
     });
 
 }());

@@ -11,9 +11,18 @@
         // when using the controller as syntax, the model is defined in this variable.
         var vm = this;
 
+        // Query for Resource Object.
         productResource.query(function (data){
+            console.log("In productResource.query");
             vm.products = data;
-        })
+        });
+
+        //// Get for Resource Object.
+        //productResource.get(function(product){
+        //    console.log("In productResource.get");
+        //    console.dir(product);
+        //    vm.product = product;
+        //});
 
         //vm.products = [
         //    {

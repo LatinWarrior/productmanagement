@@ -1,0 +1,44 @@
+<form class="form-horizontal" name="productForm">
+    <fieldset>
+        <legend>Basic Product Information</legend>
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="inputProductName">Product Name</label>
+
+            <div class="col-md-4">
+                <input class="form-control" ng-model="vm.product.productName" id="inputProductName" type="text"
+                       placeholder="Product Name"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="inputProductCode">Product Code</label>
+
+            <div class="col-md-10">
+                <input class="form-control" ui-mask="AAA-****" ng-model="vm.product.productCode" id="inputProductCode"
+                       placeholder="Product Code" type="text"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="inputAvailabilityDate">Availability</label>
+
+            <div class="col-md-4">
+                <div class="input-group">
+                    <input class="form-control" id="inputAvailabilityDate" type="text" datepicker-popup="MMM dd, YYYY "
+                           ng-model="vm.product.releaseDate"/>
+                    <span class="input-group-btn">
+                        <button class="btn btn-default">
+                            <i class="glyphicon glyphicon-calendar"/>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="inputDescription">Description</label>
+
+            <div class="col-md-10">
+                <textarea class="form-control" ng-model="vm.product.description" id="inputDescription"
+                          placeholder="Description" rows="3"/>
+            </div>
+        </div>
+    </fieldset>
+</form>
